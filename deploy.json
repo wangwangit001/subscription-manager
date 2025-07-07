@@ -1,0 +1,40 @@
+{
+  "name": "subscription-manager",
+  "description": "智能订阅管理系统 - 支持农历显示、多渠道通知",
+  "repository": "https://github.com/wangwangit001/notify",
+  "main": "index.js",
+  "compatibility_date": "2024-01-01",
+  "compatibility_flags": ["nodejs_compat"],
+  "kv_namespaces": [
+    {
+      "binding": "SUBSCRIPTIONS_KV",
+      "title": "订阅数据存储"
+    }
+  ],
+  "crons": [
+    {
+      "cron": "0 8 * * *",
+      "description": "每天早上8点检查即将到期的订阅"
+    }
+  ],
+  "env_vars": {
+    "ENVIRONMENT": {
+      "type": "plain_text",
+      "value": "production"
+    }
+  },
+  "secrets": {
+    "ADMIN_USERNAME": {
+      "description": "管理员用户名",
+      "default": "admin"
+    },
+    "ADMIN_PASSWORD": {
+      "description": "管理员密码",
+      "default": "password"
+    },
+    "JWT_SECRET": {
+      "description": "JWT密钥",
+      "generate": true
+    }
+  }
+}
